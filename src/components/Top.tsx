@@ -50,7 +50,8 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
         autoPlay
         loop
         muted
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
       />
 
       {/* コンテンツ */}
@@ -104,7 +105,7 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* 外部連携アイコン（すりガラス追加） */}
+        {/* 外部連携アイコン */}
         <div className="flex items-center gap-4 mt-4 flex-wrap">
           {icons.map((icon) => (
             <div
@@ -119,7 +120,9 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
                 whileHover={{ scale: 1.15, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() =>
-                  icon.url === "#" ? handleModal(icon.alt) : window.open(icon.url, "_blank")
+                  icon.url === "#"
+                    ? handleModal(icon.alt)
+                    : window.open(icon.url, "_blank")
                 }
               />
             </div>
@@ -157,7 +160,9 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 w-80 shadow-lg relative">
             <h3 className="text-xl font-bold mb-4">{modal.service}連携</h3>
-            <p className="mb-4">{modal.service}に接続しますか？（デモ演出です）</p>
+            <p className="mb-4">
+              {modal.service}に接続しますか？（デモ演出です）
+            </p>
             <button
               className="px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition mr-2"
               onClick={closeModal}
