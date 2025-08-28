@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { userPoints } from "../data/mockData";
 import logo from "../assets/logo.png";
 import heroVideo from "../assets/hero.mp4"; // 背景動画
+import heroPoster from "../assets/hero-poster.png"; // 動画非対応時の静止画
 import userIcon from "../assets/user.png";
 import paypayIcon from "../assets/paypay.png";
 import tcardIcon from "../assets/tcard.png";
@@ -47,6 +48,7 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
       {/* 背景動画 */}
       <video
         src={heroVideo}
+        poster={heroPoster}
         autoPlay
         loop
         muted
@@ -160,9 +162,7 @@ const Top: React.FC<Props> = ({ onNavigate }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-xl p-6 w-80 shadow-lg relative">
             <h3 className="text-xl font-bold mb-4">{modal.service}連携</h3>
-            <p className="mb-4">
-              {modal.service}に接続しますか？（デモ演出です）
-            </p>
+            <p className="mb-4">{modal.service}に接続しますか？（デモ演出です）</p>
             <button
               className="px-5 py-2 bg-gray-800 text-white rounded-lg shadow hover:bg-gray-700 transition mr-2"
               onClick={closeModal}
